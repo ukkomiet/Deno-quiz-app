@@ -1,0 +1,21 @@
+<% layout("./layouts/layout.eta") %>
+
+<h4>Quiz topics!</h4>
+
+
+<% if (it.error) { %>
+<p><%= it.topic %> contains no questions yet...</p>
+<% } ;%>
+
+<% if (it.topics && it.topics.length > 0) { %>
+
+<ul>
+<% it.topics.forEach(topic => { %>
+    <li><a href="/quiz/<%= topic.id %>"><%= topic.name %></a> 
+    </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+<p>No topics added yet!</p>
+<% } ;%>

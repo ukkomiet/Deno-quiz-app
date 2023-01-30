@@ -1,0 +1,12 @@
+
+<div class="row row-stretch">
+  <div class="column column-center">
+    <a href="/topics">Topics</a>
+  </div>
+  <div class="column column-center">
+    <a href="/">Main page</a>
+  </div>
+  <div class="column column-center">
+    <a href="/quiz">Quiz!</a>
+  </div>
+</div>

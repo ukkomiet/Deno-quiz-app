@@ -1,0 +1,55 @@
+<% layout("./layouts/layout.eta") %>
+
+<div class="column column-center">
+<h2>Quiz! Question game</h2></br>
+
+<p>
+Welcome to the Quiz! Question game website! In this site, users can play quizzes about several custom topics. The site is completely supported by user contribution; this means that all the
+questions and the answer options are added by users! Therefore, the users also hold the responsibility to add fair questions with the right answers.
+If you see faulty questions or incorrect options, please remove them. The users have the right to remove any question and any answer option. Use this right with great responsibility...
+</p>
+<p>
+However, please note that the capability to add and remove topics remain only with the admin users.
+</p>
+<p>
+Only authenticated users can use the site, so please sign in:
+</p>
+
+<% if (it.authenticated) { %>
+
+<h4>Logged in with email: <%= it.user.email %></h4>
+<form method="POST" action="/auth/logout">
+<input type="submit" value="Sign out"/>
+</form></br>
+
+<% } else { %>
+<a href="/auth/register">Register</a></br>
+<a href="/auth/login">Login</a></br>
+<% } %>
+
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Statistics</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Topics: </td>
+            <td><%= it.tNumber %></td>
+        </tr>
+        <tr>
+            <td>Questions: </td>
+            <td><%= it.qNumber %></td>
+        </tr>
+        <tr>
+            <td>User answers: </td>
+            <td><%= it.uNumber %></td>
+        </tr>
+    </tbody>
+</table>
+
+

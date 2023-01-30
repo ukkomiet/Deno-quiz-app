@@ -1,0 +1,46 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Topics!</h1>
+
+<% if (it.topics && it.topics.length > 0) { %>
+
+<ul>
+<% it.topics.forEach(topic => { %>
+    <li><a href="/topics/<%= topic.id %>"><%= topic.name %></a>
+
+    <% if (it.admin) { %>
+    <form method="POST" action="/topics/<%= topic.id %>/delete">
+    <input type="submit" value="Delete">
+    </form>
+    <% }; %>
+    </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+<p>No topics added yet!</p>
+<% } ;%>
+
+<% if (it.admin) { %>
+
+    <h2>Add a topic!</h2>
+
+    <% if (it.errors) { %>
+    <ul>
+        <% Object.keys(it.errors).forEach((attribute) => { %>
+            <% Object.values(it.errors[attribute]).forEach((err) => { %>
+                <li><%= err %></li>
+            <% }); %>
+        <% }); %>
+    </ul>
+    <% } %>
+
+    <form method="POST" action="/topics">
+    Topic name:<br/>
+    <input type="text" name="name" value="<%= it.topic %>"/><br/>
+    <input type="submit" value="Add"/>
+    </form>
+
+<% } else { %>
+    <p>Only admin users can add topics...</p>
+<% }; %>
